@@ -1,0 +1,33 @@
+extends base-menu 
+
+block content 
+    .user-view__content
+            .user-view__form-container
+                h2.heading-secondary.ma-bt-md Yeni kart
+                form.form.form-new-card
+                    .form__group.ma-bt-md
+                        label.form__label(for='name') Ad
+                        input#name.form__input(type='text', required)
+                    .form__group.form__photo-upload
+                        label.form__label(for='image') Şəkil
+                        input.form__upload(type='file',accept='image/*',id='image',name='image')
+                    .form__group
+                        label.form__label(for='price') Qiymət
+                        input#price.form__input(type='number', required)
+                    .form__group
+                        label.form__label(for='priceDiscount') Endirim
+                        input#priceDiscount.form__input(type='number')
+                    .form__group.ma-bt-md
+                        label.form__label(for='category') Kateqoriya
+                        select#category.form-control
+                            option(value=`Dönərlər` name='category') Dönərlər
+                            option(value=`Dəniz-məhsulları` name='category') Dəniz məhsulları
+                            option(value=`İçkilər` name='category') İçkilər
+                            option(value=`Kabablar` name='category') Kabablar
+                            option(value=`Pizzalar` name='category') Pizzalar
+                            option(value=`Suşilər` name='category') Suşilər
+                            option(value=`Salatlar` name='category') Salatlar
+                            option(value=`Şirniyyatlar` name='category') Şirniyyatlar
+                            option(value=`Qəlyənaltılar` name='category') Qəlyənaltılar
+                    .form__group.right.float-left.mr-3
+                        button.btn.btn--small.btn-success.btn--save-password Əlavə et

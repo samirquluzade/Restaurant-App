@@ -1,0 +1,32 @@
+extends base-overview 
+
+block content 
+    section.section--1
+        .slider
+            each card in cards
+                .slide.slide--1
+                    .images
+                        img(src=`/images/cards/${card.image}`)
+            button.slider__btn.slider__btn--left ←
+            button.slider__btn.slider__btn--right →
+            .dots
+    section.section--2
+        .campaign
+            .section-title
+                h3 Kampaniyalar
+            a.etrafli(href='/kampaniyalar') Ətraflı →
+            .row
+                each card in cards
+                    if(card.priceDiscount)
+                        .col-md-3.mt-3
+                            .card
+                                img.card-img-top(src=`/images/cards/${card.image}`, alt=`${card.name}`, style='width: 100%;')
+                                .card-body
+                                    h4.card-title.text-center=card.name
+                                    p.card-text.text-center=`${card.price}₼`
+                                    span=`${card.priceDiscount}₼`
+                                    br
+                                    |
+                                    div.d-flex.justify-content-center.text-center
+                                        button.btn.btn-danger.add__basketDisco Səbətə əlavə et
+                    

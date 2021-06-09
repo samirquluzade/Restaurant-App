@@ -1,0 +1,92 @@
+header
+  .site-icon
+  i.fa.fa-bars.menu-bar(aria-hidden='true')
+  .header
+    ul
+      li
+        a(href='/') Ana səhifə
+      li
+        a(href='/Pizzalar') Pizzalar
+      li
+        a(href='/Dönərlər') Dönərlər
+      li
+        a(href='/Kabablar') Kabablar
+      li
+        a(href='/Suşilər') Suşilər
+      li
+        a(href='/Dəniz-məhsulları') Dəniz məhsulları
+      li
+        a(href='/Salatlar') Salatlar
+      li
+        a(href='/Şirniyyatlar') Şirniyyatlar
+      li
+        a(href='/Qəlyənaltılar') Qəlyanaltılar
+      li
+        a(href='/İçkilər') İçkilər
+  nav.nav.nav--user 
+    if user
+      .buttons.mt-3(data-toggle="modal",data-target=".bd-example-modal-lg")
+        i.fa.fa-shopping-basket.basket
+          span#count 0
+      input.btn.btn-info.nav__el--logout(type='button', value='Çıxış')
+      a.nav__el(href="/me")
+        img.nav__user-img(src=`/images/users/${user.photo}` alt=`Photo of ${user.name}`)
+        span=user.name.split(' ')[0]
+    else
+      .buttons.mt-3(data-toggle="modal",data-target=".bd-example-modal-lg")
+          i.fa.fa-shopping-basket.basket
+            span#count 0
+          a(href='/login')
+            input.btn.btn-primary.btn__login(type='button', value='Daxil ol')
+          a(href='/signup')
+            input.btn.btn-success.btn__signup(type='button', value='Qeydiyyatdan keç')  
+.header-bar
+  ul.header-ul
+    li
+      a(href='/') Ana səhifə
+    li
+      a(href='/Pizzalar') Pizzalar
+    li
+      a(href='/Dönərlər') Dönərlər
+    li
+      a(href='/Kabablar') Kabablar
+    li
+      a(href='/Suşilər') Suşilər
+    li
+      a(href='/Deniz-məhsulları') Dəniz məhsulları
+    li
+      a(href='/Salatlar') Salatlar
+    li
+      a(href='/Şirniyyatlar') Şirniyyatlar
+    li
+      a(href='/Qəlyənaltılar') Qəlyanaltılar
+    li
+      a(href='/İçkiler') İçkilər
+
+
+.modal.fade.bd-example-modal-lg(tabindex='-1', role='dialog', aria-labelledby='myLargeModalLabel', aria-hidden='true')
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        h5.modal-title Səbət
+        button.close(type="button" data-dismiss="modal")
+          span &times;
+      .modal-body
+        table.w-100
+          thead.text-center
+            th Adı
+            th Qiyməti
+            th Sayı
+            th Ümumi qiyməti
+            th Sil
+          tbody.text-center.orders(style='line-height:3')
+        div.text-center.mt-3.h5 Ümumi qiymət :
+          span.total-cart
+        if !user
+              h6.mt-2.text-center(style="color:red") Sifarişi təsdiqləmək üçün hesabınıza daxil olun!
+      .modal-footer 
+        if user
+          button.btn.btn-secondary(type="button" data-dismiss="modal") Bağla 
+          button.btn.btn-success.orderNow(type="button") Sifariş et
+        else 
+          button.btn.btn-secondary(type="button" data-dismiss="modal") Bağla 

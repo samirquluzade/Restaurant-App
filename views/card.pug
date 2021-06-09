@@ -1,0 +1,20 @@
+extends base-menu 
+
+block content 
+    section.menu-body
+        .menu-name
+            h2.section-title.text-center.pt-4=cards[0].category
+        .menu-cards
+            .container
+                .row
+                    each card in cards
+                            .col-md-3.mt-5
+                                .card
+                                    img.card-img-top(src=`/images/cards/${card.image}`, alt=`${card.name}`, style='width: 100%;')
+                                    .card-body
+                                        h4.card-title.text-center=card.name
+                                        span.card-text.text-center=`${card.price}₼`
+                                        br
+                                        |
+                                        div.d-flex.justify-content-center.text-center
+                                            button.btn.btn-danger.add__basket Səbətə əlavə et

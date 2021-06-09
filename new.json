@@ -1,0 +1,15 @@
+[
+  {
+    "image": "doner-1.jpg",
+    "name": "Mal dönəri",
+    "price": 3,
+    "priceDiscount": 10
+  }
+]
+/*- else
+    //-   .buttons
+    //-       i.fa.fa-shopping-basket.basket
+    //-         span 10
+    //-       a(href='/login')
+    //-         input.btn.btn-primary(type='button', value='Daxil ol')
+    //-       input.btn.btn-success(type='button', value='Qeydiyyatdan keç')  */

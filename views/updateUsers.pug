@@ -1,0 +1,25 @@
+extends base-menu 
+
+block content 
+    -if(user.role === "admin")
+        .user-view__content
+                .user-view__form-container
+                    h2.heading-secondary.ma-bt-md Hesab parametrləri
+                    form.form.form-user-all-data
+                        .form__group.ma-bt-md
+                            label.form__label(for='id') ID
+                            input#id.form__input(type='text', value=`${curUser.id}`, required,name='id',disabled)
+                        .form__group.ma-bt-md
+                            label.form__label(for='role') Rol
+                            input#role.form__input(type='text', value=`${curUser.role}`, required,name='role')
+                        .form__group
+                            label.form__label(for='name') Ad
+                            input#name.form__input(type='text', value=`${curUser.name}`, required,name='name')
+                        .form__group.ma-bt-md
+                            label.form__label(for='surname') Soyad
+                            input#surname.form__input(type='text', value=`${curUser.surname}`, required,name='surname')
+                        .form__group.ma-bt-md
+                            label.form__label(for='email') Email
+                            input#email.form__input(type='email', value=`${curUser.email}`, required,name='email')
+                        .form__group.right.float-left.mr-3
+                            button.btn.btn--small.btn-success.btn--save-password Yadda saxla

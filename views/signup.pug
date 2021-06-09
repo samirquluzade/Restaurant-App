@@ -1,0 +1,24 @@
+extends base-menu 
+
+block content
+    section.menu-body
+        .login-form
+            h2 Qeydiyyatdan keç
+            form.form.form--signup
+                .form-group
+                    label.form__label(for='name') Ad
+                    input#name.form__input(type='text', placeholder='Adınız', , required)
+                .form-group
+                    label.form__label(for='surname') Soyad
+                    input#surname.form__input(type='text', placeholder='Soyadınız', , required)
+                .form-group
+                    label.form__label(for='email') Email
+                    input#email.form__input(type='email', placeholder='you@example.com', , required)
+                .form-group
+                    label.form__label(for='password') Şifrə
+                    input#password.form__input(type='password', placeholder='••••••••', , required, minlength='8')
+                .form-group
+                    label.form__label(for='passwordConfirm') Şifrənin təkrarı
+                    input#passwordConfirm.form__input(type='password', placeholder='••••••••', , required, minlength='8')
+                .form-group.text-center
+                    button.btn.btn-success.login__btn Qeydiyyatdan keç

@@ -1,0 +1,14 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+li{
+    list-style: none;
+}
+.site-icon{
+    background-image: url('monumental-restaurant-logo-cafe-png-favpng-TqN3vfL7Fy95dhWXhFZeThw25.ecfde86a.jpg');
+    width: 100px;
+    height: 100px;
+}
+/*# sourceMappingURL=index.ea68c68a.css.map */

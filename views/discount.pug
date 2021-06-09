@@ -1,0 +1,22 @@
+extends base-menu 
+
+block content 
+    section.menu-body
+        .menu-name
+            h2.section-title.text-center.pt-4 Kampaniyalar
+        .menu-cards
+            .container
+                .row
+                    each card in cards
+                        if(card.priceDiscount)
+                            .col-md-3.mt-5
+                                .card
+                                    img.card-img-top(src=`/images/cards/${card.image}`, alt=`${card.name}`, style='width: 100%;height:250px')
+                                    .card-body
+                                        h4.card-title.text-center=card.name
+                                        p.card-text.text-center=`${card.price}₼`
+                                        span=`${card.priceDiscount}₼`
+                                        br
+                                        |
+                                        div.d-flex.justify-content-center.text-center
+                                            button.btn.btn-danger.add__basketDisco Səbətə əlavə et

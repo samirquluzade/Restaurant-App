@@ -1,0 +1,45 @@
+extends base-menu 
+
+mixin navItem(link,text,icon,active)
+    li(class=`${active ? 'side-nav--active' : ''}`)
+        a(href=`${link}`)
+            svg.icon-size
+                use(xlink:href=`images/icons.svg#icon-${icon}`)
+            | #{text}
+
+block content 
+    main.main
+        .user-view
+            nav.user-view__menu
+                -if(user.role === "admin")    
+                    .admin-nav
+                        h3.admin-nav__heading.text-center Admin
+                        ul.side-nav
+                            +navItem('/manageCards','Kartları idarəetmə','map')
+                            +navItem('/manageUsers','Istifadəçiləri idarəetmə','users')
+                            
+            .manage-cards
+                .user-view__form-container
+                    table.table.table-borderless.table-dark
+                        thead
+                            tr
+                                th(scope='col') Ad
+                                th(scope='col') Soyad
+                                th(scope='col') Email
+                                th(scope='col') Şəkil
+                                th(scope='col') Rol
+                                th(scope='col') Yenilə
+                                th(scope='col') Sil
+                        tbody
+                            each user in users
+                                    tr
+                                        td=`${user.name}`
+                                        td=`${user.surname}`
+                                        td=`${user.email}`
+                                        td=`${user.photo}`
+                                        td=`${user.role}`
+                                        td 
+                                            a(href=`/users/updateUser/${user.id}`)
+                                                input.card-update.btn.btn--small.btn-primary(type="button",id=`${user._id}`,value="Yenilə")
+                                        td 
+                                            input.card-delete.btn.btn--small.btn-danger(type="button",id=`${user._id}`,value="Sil")

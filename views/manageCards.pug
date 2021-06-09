@@ -1,0 +1,50 @@
+extends base-menu 
+
+mixin navItem(link,text,icon,active)
+    li(class=`${active ? 'side-nav--active' : ''}`)
+        a(href=`${link}`)
+            svg.icon-size
+                use(xlink:href=`images/icons.svg#icon-${icon}`)
+            | #{text}
+
+block content 
+    main.main
+        .user-view
+            nav.user-view__menu
+                -if(user.role === "admin")    
+                    .admin-nav
+                        h3.admin-nav__heading.text-center Admin
+                        ul.side-nav
+                            +navItem('/manageCards','Kartları idarəetmə','map')
+                            +navItem('/manageUsers','Istifadəçiləri idarəetmə','users')
+                            
+            .manage-cards
+                .user-view__form-container.text-center
+                    a(href='/cards/createNewCard')
+                        input.btn.btn-success(type="button" value="Yeni kart" style="text-align:center")
+                    table.table.table-borderless.table-dark
+                        thead
+                            tr
+                                th(scope='col') #
+                                th(scope='col') Ad
+                                th(scope='col') Qiymət
+                                th(scope='col') Endirim
+                                th(scope='col') Şəkil
+                                th(scope='col') Yenilə
+                                th(scope='col') Sil
+                        tbody
+                            each card in cards
+                                tr
+                                    th(scope='row')=`${card._id}`
+                                    td=`${card.name}`
+                                    td=`${card.price}`
+                                    if (card.priceDiscount === undefined)
+                                        td=`${card.priceDiscount = '---------'}`
+                                    else
+                                        td=`${card.priceDiscount}`
+                                    td=`${card.image}`
+                                    td 
+                                        a(href=`/cards/updateCards/${card.id}`)
+                                            input.card-update.btn.btn--small.btn-primary(type="button",id=`${card._id}`,value="Yenilə")
+                                    td 
+                                        input.card-deleteCard.btn.btn--small.btn-danger(type="button",id=`${card._id}`,value="Sil")

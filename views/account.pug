@@ -1,0 +1,52 @@
+extends base-menu 
+
+mixin navItem(link,text,icon,active)
+    li(class=`${active ? 'side-nav--active' : ''}`)
+        a(href=`${link}`)
+            svg.icon-size
+                use(xlink:href=`images/icons.svg#icon-${icon}`)
+            | #{text}
+
+block content 
+    main.main
+        .user-view
+            nav.user-view__menu
+                -if(user.role === "admin")    
+                    .admin-nav
+                        h3.admin-nav__heading.text-center Admin
+                        ul.side-nav
+                            +navItem('/manageCards','Kartları idarəetmə','map')
+                            +navItem('/manageUsers','Istifadəçiləri idarəetmə','users')
+                            
+            .user-view__content
+                .user-view__form-container
+                    h2.heading-secondary.ma-bt-md Hesab parametrləri
+                    form.form.form-user-data
+                        .form__group
+                            label.form__label(for='name') Ad
+                            input#name.form__input(type='text', value=`${user.name}`, required,name='name')
+                        .form__group.ma-bt-md
+                            label.form__label(for='email') Email
+                            input#email.form__input(type='email', value=`${user.email}`, required,name='email')
+                        .form__group.form__photo-upload
+                            img.form__user-photo(src=`/images/users/${user.photo}`, alt=`User photo`)
+                            input.form__upload(type='file',accept='image/*',id='photo',name='photo')
+                            //- label(for='photo') Choose new photo
+                        .form__group.right
+                            button.btn.btn--small.btn-success.btn--save-password Yadda saxla
+                    <br>
+                    .user-view__form-container
+                        h2.heading-secondary.ma-bt-md Şifrəni dəyiş
+                        form.form.form-user-settings
+                            .form__group
+                                label.form__label(for='password-current') İndiki şifrə
+                                input#password-current.form__input(type='password', placeholder='••••••••', required, minlength='8')
+                            .form__group
+                                label.form__label(for='password') Yeni şifrə
+                                input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
+                            .form__group.ma-bt-lg
+                                label.form__label(for='password-confirm') Yeni şifrənin təkrarı
+                                input#password-confirm.form__input(type='password', placeholder='••••••••', required, minlength='8')
+                            .form__group.right
+                                button.btn.btn--small.btn-success Yadda saxla 
+// Powered by Samir Quluzadeh
